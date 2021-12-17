@@ -1,0 +1,18 @@
+
+<div *ngIf="users$ | async as users; else loading">
+    <!-- [(ngModel)]="selectedUser"  -->
+    <select class="custom-select" (ngModelChange)="onChange($event)">
+        <option *ngFor="let user of users; let i = index" [value]="user.id">
+                {{user.displayName}}
+        </option>
+    </select>
+</div>
+
+
+<app-list-items></app-list-items>
+
+
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>
+

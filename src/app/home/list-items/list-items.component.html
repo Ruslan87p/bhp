@@ -1,0 +1,48 @@
+<div class="container" *ngIf="users$ | async as users; else loading">
+
+    <div class="table">
+        <div *ngFor="let user of users">
+            <div *ngIf="posts$ | async as posts; else loading">
+                <div *ngFor="let post of posts">
+                    <div *ngIf="user.id === post.ownerId">
+                        <!-- [ngClass]="{'selected': selectedPost.id === post.id}" -->
+                        <section class="content">
+                            <div class="avatar-frame">
+                                <img class="avatar" src="{{user.img}}" alt="">
+                            </div>
+                            <div class="info">
+                                <a href="">{{user.displayName}}</a>
+                                <p>{{post.createdAt | date:'dd/MM/yyyy'}}</p>
+                            </div>
+    
+                            <p class="text">{{post.txt}}</p>
+            
+                            <div class="buttons">
+                                <button class="edit" (click)="editPost(post)">EDIT COMMENT</button>
+                                <button  class="delete" (click)="deletePost(post.id)">DELETE COMMENT</button>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <ng-container *ngIf="showEditSection">
+        <div class="form" >
+            <textarea #textarea name="" id="" cols="30" rows="10"></textarea>
+            <button (click)="addComment(textarea.value)">ADD COMMENT</button>
+        </div>
+    </ng-container>
+
+</div>
+
+
+
+
+
+<ng-template #loading>
+    <p>Loading...</p>
+</ng-template>
