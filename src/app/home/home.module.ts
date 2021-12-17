@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { FormsModule } from '@angular/forms';
+import { OrderByPipe } from './order-by.pipe';
 
 
 
@@ -10,6 +11,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     HomeComponent,
     ListItemsComponent,
+    OrderByPipe,
   ],
   exports: [
     HomeComponent,

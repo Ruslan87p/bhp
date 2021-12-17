@@ -42,14 +42,17 @@ export class ListItemsComponent implements OnInit {
     }
     this.sharedSvc.updatePostById(this.newPost).subscribe()
     this.users$ = this.sharedSvc.getUsers();
-
-    
   }
+
+  // sortDate() {
+  //   this.posts.sort((a: string, b: string) => {
+  //     return b.createdAt - a.createdAt;
+  //   });
+  // }
 
   ngOnInit(): void {
     this.users$ = this.sharedSvc.getUsers();
     this.posts$ = this.sharedSvc.getPosts();
-
   }
 
 }
